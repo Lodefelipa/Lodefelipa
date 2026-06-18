@@ -443,8 +443,9 @@
 
     <main class="container">
         <h2 class="section-title">Nuestro Menú</h2>
+        
         <div class="categoria-container">
-            <h3 class="categoria-title">PIZZAS </h3>
+            <h3 class="categoria-title">PIZZAS</h3>
             <div class="menu-grid">
                 <div class="menu-item">
                     <div class="item-info">
@@ -452,7 +453,7 @@
                         <p class="item-desc">Salsa de tomate, muzarella, oregano y aceitunas.</p>
                         <div class="item-footer">
                             <span class="item-price">$11.000</span>
-                            <button onclick="agregarAlCarrito('MUZARELLA', 11000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('MUZARELLA', 11000, 'PIZZAS')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -462,7 +463,7 @@
                         <p class="item-desc">Salsa de tomate, jamon, muzarella, rodajas de tomate, oregano y aceitunas.</p>
                         <div class="item-footer">
                             <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('NAPOLITANA', 14000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('NAPOLITANA', 14000, 'PIZZAS')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -472,20 +473,23 @@
                         <p class="item-desc">Salsa de tomate, muzarella, jamon, morron, oregano y aceitunas.</p>
                         <div class="item-footer">
                             <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('JAMON Y MORRON', 14000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('JAMON Y MORRON', 14000, 'PIZZAS')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-info">
                         <h4 class="item-title">🍕🏠ESPECIAL DE LA CASA</h4>
-                        <p class="item-desc">Salsa de tomate, muzarella, papas fritas, salsa cheddar, lluvia de panceta, cebolla.</p>
+                        <p class="item-desc">Salsa de tomate, muzarella, jamon, papas fritas, salsa cheddar, lluvia de panceta, cebolla.</p>
                         <div class="item-footer">
                             <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('NAPOLITANA', 14000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('🍕🏠ESPECIAL DE LA CASA', 14000, 'PIZZAS')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
         <div class="categoria-container">
             <h3 class="categoria-title">Hamburguesas (Carne de entraña + Fritas)</h3>
             <div class="menu-grid">
@@ -495,7 +499,7 @@
                         <p class="item-desc">Doble medallón de entraña, provoleta, cebolla caramelizada, tomate, huevo y mayonesa de chimichurri. Con fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$13.000</span>
-                            <button onclick="agregarAlCarrito('Hamburguesa JMR', 13000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Hamburguesa JMR', 13000, 'Hamburguesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -505,7 +509,7 @@
                         <p class="item-desc">Doble medallón de entraña, panceta, cheddar, cebolla caramelizada y barbacoa. Con fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$12.000</span>
-                            <button onclick="agregarAlCarrito('Hamburguesa BBQ', 12000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Hamburguesa BBQ', 12000, 'Hamburguesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -515,7 +519,7 @@
                         <p class="item-desc">Doble medallón de entraña, panceta y cheddar. Con fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$11.000</span>
-                            <button onclick="agregarAlCarrito('Hamburguesa-GOLDEN CHEDDAR', 11000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Hamburguesa-GOLDEN CHEDDAR', 11000, 'Hamburguesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -525,7 +529,7 @@
                         <p class="item-desc">Doble medallón de entraña, cebolla picada, cheddar, ketchup y mostaza. Con fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$12.000</span>
-                            <button onclick="agregarAlCarrito('Hamburguesa Doble Cuarto', 12000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Hamburguesa Doble Cuarto', 12000, 'Hamburguesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -535,7 +539,7 @@
                         <p class="item-desc">Doble medallón de entraña y queso cheddar. Con fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$10.000</span>
-                            <button onclick="agregarAlCarrito('Hamburguesa Doble Queso', 10000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Hamburguesa Doble Queso', 10000, 'Hamburguesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -551,7 +555,7 @@
                         <p class="item-desc">Milanesa clásica con papas fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$10.000</span>
-                            <button onclick="agregarAlCarrito('Milanesa Simple', 10000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Milanesa Simple', 10000, 'Milanesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -561,7 +565,7 @@
                         <p class="item-desc">Con dos huevos fritos arriba y papas fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$12.000</span>
-                            <button onclick="agregarAlCarrito('Milanesa A Caballo', 12000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Milanesa A Caballo', 12000, 'Milanesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -571,7 +575,7 @@
                         <p class="item-desc">Salsa de tomate, jamón y muzzarella con papas fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('Milanesa Napolitana', 14000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Milanesa Napolitana', 14000, 'Milanesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -581,7 +585,7 @@
                         <p class="item-desc">Salsa de tomate, cebolla caramelizada, muzzarella, panceta, rodajas de tomate y huevo frito. Con fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$15.000</span>
-                            <button onclick="agregarAlCarrito('Milanesa Especial de la Casa 1', 15000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Milanesa Especial de la Casa 1', 15000, 'Milanesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -591,7 +595,7 @@
                         <p class="item-desc">Salsa cheddar, panceta, cebolla de verdeo y un huevo frito. Con fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('Milanesa Especial de la Casa 2', 14000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Milanesa Especial de la Casa 2', 14000, 'Milanesas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -607,7 +611,7 @@
                         <p class="item-desc">Pollo entero dorado al horno con papas fritas. (Con anticipacion de 2HR).</p>
                         <div class="item-footer">
                             <span class="item-price">$20.000</span>
-                            <button onclick="agregarAlCarrito('Pollo Entero al Horno con Fritas', 20000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Pollo Entero al Horno con Fritas', 20000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -617,7 +621,7 @@
                         <p class="item-desc">Pollo entero al horno con papas fritas y gaseosa. (Con anticipacion de 2HR).</p>
                         <div class="item-footer">
                             <span class="item-price">$22.000</span>
-                            <button onclick="agregarAlCarrito('Pollo Entero con Fritas + Gaseosa', 22000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Pollo Entero con Fritas + Gaseosa', 22000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -627,7 +631,7 @@
                         <p class="item-desc">Tortilla de papa.</p>
                         <div class="item-footer">
                             <span class="item-price">$10.000</span>
-                            <button onclick="agregarAlCarrito('Tortilla-Individual', 10000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Tortilla-Individual', 10000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -637,7 +641,7 @@
                         <p class="item-desc">Sándwich de churrasquito con lechuga, tomate y papas fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('Sándwich Clásico (Churrasquito)', 14000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Sándwich Clásico (Churrasquito)', 14000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -647,7 +651,7 @@
                         <p class="item-desc">Sánguche de bondiola braseada con cebolla, morron, salsa barbacoa y papas fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$10.000</span>
-                            <button onclick="agregarAlCarrito('Sanguche de Bondiola', 10000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Sanguche de Bondiola', 10000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -657,7 +661,7 @@
                         <p class="item-desc">Sándwich de churrasquito con lechuga, tomate, jamón, queso, huevo y papas fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$15.000</span>
-                            <button onclick="agregarAlCarrito('Sándwich Completo (Churrasquito)', 15000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Sándwich Completo (Churrasquito)', 15000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -673,7 +677,7 @@
                         <p class="item-desc">Porción 1kg de papas fritas caseras.</p>
                         <div class="item-footer">
                             <span class="item-price">$8.000</span>
-                            <button onclick="agregarAlCarrito('Papas Fritas Simples', 8000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Papas Fritas Simples', 8000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -683,7 +687,7 @@
                         <p class="item-desc">Porción 1kg de papas fritas con salsa cheddar.</p>
                         <div class="item-footer">
                             <span class="item-price">$10.000</span>
-                            <button onclick="agregarAlCarrito('Papas Fritas con Cheddar', 10000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Papas Fritas con Cheddar', 10000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -693,7 +697,7 @@
                         <p class="item-desc">Porción 1kg de papas fritas completas.</p>
                         <div class="item-footer">
                             <span class="item-price">$12.000</span>
-                            <button onclick="agregarAlCarrito('Papas Fritas Completas', 12000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Papas Fritas Completas', 12000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -703,7 +707,7 @@
                         <p class="item-desc">Empanadas de carne cortada a cuchillo (Disponibles sabados y domingos al mediodia).</p>
                         <div class="item-footer">
                             <span class="item-price">$24.000</span>
-                            <button onclick="agregarAlCarrito('Docena de Empanadas', 24000)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Docena de Empanadas', 24000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -713,7 +717,7 @@
                         <p class="item-desc">Empanada de carne cortada a cuchillo por unidad (Disponibles sabados y domingos al mediodia).</p>
                         <div class="item-footer">
                             <span class="item-price">$2.500</span>
-                            <button onclick="agregarAlCarrito('Empanada por Unidad', 2500)" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Empanada por Unidad', 2500, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -729,7 +733,7 @@
                         <p class="item-desc">Combiná dos milanesas a tu gusto + Papas Fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$26.000</span>
-                            <button onclick="agregarAlCarrito('⭐ Gran Promo Milanesas', 26000)" class="btn-order">Agregar Promo</button>
+                            <button onclick="agregarAlCarrito('⭐ Gran Promo Milanesas', 26000, 'Promociones')" class="btn-order">Agregar Promo</button>
                         </div>
                     </div>
                 </div>
@@ -790,7 +794,7 @@
             document.getElementById('cart-overlay').classList.toggle('open');
         }
 
-        function agregarAlCarrito(nombre, precio) {
+        function agregarAlCarrito(nombre, precio, categoria) {
             const productoExistente = carrito.find(item => item.nombre === nombre);
 
             if (productoExistente) {
@@ -799,10 +803,10 @@
                 carrito.push({
                     nombre: nombre,
                     precio: precio,
+                    categoria: categoria,
                     cantidad: 1
                 });
             }
-            // Actualiza los datos visuales de los elementos sin abrir la barra lateral
             actualizarInterfazCarrito();
         }
 
@@ -837,7 +841,7 @@
                     const itemHtml = `
                         <div class="cart-item">
                             <div class="cart-item-details">
-                                <div class="cart-item-title">${item.nombre}</div>
+                                <div class="cart-item-title">${item.nombre} <span style="font-size:0.75rem; color:#e67e22; display:block;">(${item.categoria})</span></div>
                                 <div class="cart-item-price">$${item.precio.toLocaleString('es-AR')} <span style="font-weight:normal; font-size:0.8rem; color:#7f8c8d;">c/u</span></div>
                             </div>
                             <div class="cart-item-controls">
@@ -865,22 +869,23 @@
             let totalPedido = 0;
 
             let mensaje = `Hola Lo de Felipa! Quiero hacer un pedido:\n\n`;
-            mensaje += `=========================\n`;
+            mensaje += `==============================\n`;
 
             carrito.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
                 totalPedido += subtotal;
-                mensaje += `• ${item.cantidad}x ${item.nombre}\n`;
+                mensaje += `• ${item.cantidad}x ${item.nombre} [${item.categoria}]\n`;
                 mensaje += `  Precio Unitario: $${item.precio.toLocaleString('es-AR')}\n`;
                 mensaje += `  Subtotal: $${subtotal.toLocaleString('es-AR')}\n\n`;
             });
 
-            mensaje += `=========================\n`;
+            mensaje += `==============================\n`;
             mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n\n`;
             mensaje += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
             mensaje += `📅 *Fecha del pedido:* ${new Date().toLocaleString('es-AR')}\n`;
             mensaje += `👤 *Nombre:* [Escribí acá tu nombre completo]\n`;
-            mensaje += `💳 *Método de pago (Transferencia o efectivo):* [Escribí acá tu método de pago preferido]\n`;
+            mensaje += `💵 *Aclarar si el pago es en efectivo.\n`
+            mensaje += `💳 *Transferencia:*\n`;
             mensaje += `📋 *ALIAS:* jmr.2026.mp\n`;
             mensaje += `🏦 *CBU:* 0000003100048088555539\n`;
 
