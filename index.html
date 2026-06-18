@@ -863,57 +863,58 @@
         }
 
         function enviarPedidoWhatsApp() {
-            if (carrito.length === 0) {
-                alert('¡Tu carrito está vacío! Agrega algún plato antes de enviar.');
-                return;
-            }
+                    if (carrito.length === 0) {
+                        alert('¡Tu carrito está vacío! Agrega algún plato antes de enviar.');
+                        return;
+                    }
 
-            const metodoEntrega = document.querySelector('input[name="metodo-entrega"]:checked').value;
-            const numeroTelefono = "5491122844032"; // Número de teléfono de WhatsApp (con código de país)
-            
-            // --- MENSAJE 1: DETALLE DEL PEDIDO ---
-            let mensajePedido = `😊Hola *Lo de Felipa*! Queria hacer este pedido:\n\n`;
-            
-            const categoriasMap = {};
-            let total = 0;
+                    const metodoEntrega = document.querySelector('input[name="metodo-entrega"]:checked').value;
+                    const numeroTelefono = "5491122844032"; 
+                    
+                    // --- MENSAJE 1: DETALLE DEL PEDIDO ---
+                    let mensajePedido = `Hola *Lo de Felipa*! Hace un momento armé este pedido desde la web:\n\n`;
+                    
+                    const categoriasMap = {};
+                    let total = 0;
 
-            carrito.forEach(item => {
-                if (!categoriasMap[item.categoria]) {
-                    categoriasMap[item.categoria] = [];
+                    carrito.forEach(item => {
+                        if (!categoriasMap[item.categoria]) {
+                            categoriasMap[item.categoria] = [];
+                        }
+                        categoriasMap[item.categoria].push(item);
+                        total += item.precio * item.cantidad;
+                    });
+
+                    for (const categoria in categoriasMap) {
+                        mensajePedido += `*🔹 ${categoria.toUpperCase()}*\n`;
+                        categoriasMap[categoria].forEach(item => {
+                            // Aquí agregamos el precio unitario con el formato ($XX.XXX c/u)
+                            mensajePedido += `  • [${item.cantidad}x] ${item.nombre} ($${item.precio.toLocaleString('es-AR')} c/u)\n`;
+                        });
+                        mensajePedido += `\n`;
+                    }
+
+                    mensajePedido += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
+                    mensajePedido += `💰 *Total del pedido:* $${total.toLocaleString('es-AR')}\n\n`;
+                    mensajePedido += `¿Me confirman si lo pueden tomar? ¡Gracias!`;
+
+                    // --- MENSAJE 2: DATOS DE TRANSFERENCIA ---
+                    let mensajePago = `*Para realizar la transferencia en esta cuenta:*\n\n`;
+                    mensajePago += `🏦 *Banco / billetera:* Mercado Pago\n`;
+                    mensajePago += `📌 *Alias:* lodefelipa.casero\n`;
+                    mensajePago += `🔢 *CBU:* 0000003100000000000000\n`;
+                    mensajePago += `👤 *Titular:* Felipa Sabores`;
+
+                    // Envío del mensaje 1
+                    const urlPedido = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajePedido)}`;
+                    window.open(urlPedido, '_blank');
+
+                    // Envío del mensaje 2 un instante después
+                    setTimeout(() => {
+                        const urlPago = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajePago)}`;
+                        window.open(urlPago, '_blank');
+                    }, 800);
                 }
-                categoriasMap[item.categoria].push(item);
-                total += item.precio * item.cantidad;
-            });
-
-            for (const categoria in categoriasMap) {
-                mensajePedido += `*🔹 ${categoria.toUpperCase()}*\n`;
-                categoriasMap[categoria].forEach(item => {
-                    mensajePedido += `  • [${item.cantidad}x] ${item.nombre}\n`;
-                });
-                mensajePedido += `\n`;
-            }
-
-            mensajePedido += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
-            mensajePedido += `💰 *Total del pedido:* $${total.toLocaleString('es-AR')}\n\n`;
-            mensajePedido += `¿Me confirman si lo pueden tomar? ¡Gracias!`;
-
-            // --- MENSAJE 2: DATOS DE TRANSFERENCIA ---
-            let mensajePago = `*Para realizar la transferencia:*\n\n`;
-            mensajePago += `🏦 *Banco / billetera:* Mercado Pago\n`;
-            mensajePago += `📌 *Alias:* jmr.2026.mp\n`;
-            mensajePago += `🔢 *CBU:* 0000003100048088555539\n`;
-            mensajePago += `👤 *Titular:* Alejo Manuel Ojeda`;
-
-            // Envío del mensaje 1
-            const urlPedido = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajePedido)}`;
-            window.open(urlPedido, '_blank');
-
-            // Envío del mensaje 2 un instante después
-            setTimeout(() => {
-                const urlPago = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajePago)}`;
-                window.open(urlPago, '_blank');
-            }, 800);
-        }
     </script>
 </body>
 </html>
