@@ -480,7 +480,7 @@
                 <div class="menu-item">
                     <div class="item-info">
                         <h4 class="item-title">🍕🏠ESPECIAL DE LA CASA</h4>
-                        <p class="item-desc">Salsa de tomate, muzarella, jamon, papas fritas, salsa cheddar, lluvia de panceta, cebolla.</p>
+                        <p class="item-desc">Salsa de tomate, muzarella, papas fritas, salsa cheddar, lluvia de panceta, cebolla.</p>
                         <div class="item-footer">
                             <span class="item-price">$14.000</span>
                             <button onclick="agregarAlCarrito('🍕🏠ESPECIAL DE LA CASA', 14000, 'PIZZAS')" class="btn-order">Agregar</button>
@@ -869,7 +869,7 @@
             let totalPedido = 0;
 
             let mensaje = `Hola Lo de Felipa! Quiero hacer un pedido:\n\n`;
-            mensaje += `==============================\n`;
+            mensaje += `=========================\n`;
 
             carrito.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
@@ -879,13 +879,12 @@
                 mensaje += `  Subtotal: $${subtotal.toLocaleString('es-AR')}\n\n`;
             });
 
-            mensaje += `==============================\n`;
+            mensaje += `=========================\n`;
             mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n\n`;
             mensaje += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
             mensaje += `📅 *Fecha del pedido:* ${new Date().toLocaleString('es-AR')}\n`;
             mensaje += `👤 *Nombre:* [Escribí acá tu nombre completo]\n`;
-            mensaje += `💵 *Aclarar si el pago es en efectivo.\n`
-            mensaje += `💳 *Transferencia:*\n`;
+            mensaje += `💳 *Método de pago (Transferencia o efectivo):* [Escribí acá tu método de pago preferido]\n`;
             mensaje += `📋 *ALIAS:* jmr.2026.mp\n`;
             mensaje += `🏦 *CBU:* 0000003100048088555539\n`;
 
