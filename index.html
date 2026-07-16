@@ -462,13 +462,8 @@
                         <h4 class="item-title">NAPOLITANA</h4>
                         <p class="item-desc">Salsa de tomate, jamon, muzarella, rodajas de tomate, oregano y aceitunas.</p>
                         <div class="item-footer">
-<<<<<<< HEAD
-                            <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('NAPOLITANA', 14000, 'PIZZAS')" class="btn-order">Agregar</button>
-=======
                             <span class="item-price">$15.000</span>
                             <button onclick="agregarAlCarrito('NAPOLITANA', 15000, 'PIZZAS')" class="btn-order">Agregar</button>
->>>>>>> 1ca7b2434f1686ce039a2e0ad0e61882e4e459aa
                         </div>
                     </div>
                 </div>
@@ -477,13 +472,8 @@
                         <h4 class="item-title">JAMON Y MORRON</h4>
                         <p class="item-desc">Salsa de tomate, muzarella, jamon, morron, oregano y aceitunas.</p>
                         <div class="item-footer">
-<<<<<<< HEAD
-                            <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('JAMON Y MORRON', 14000, 'PIZZAS')" class="btn-order">Agregar</button>
-=======
                             <span class="item-price">$15.000</span>
                             <button onclick="agregarAlCarrito('JAMON Y MORRON', 15000, 'PIZZAS')" class="btn-order">Agregar</button>
->>>>>>> 1ca7b2434f1686ce039a2e0ad0e61882e4e459aa
                         </div>
                     </div>
                 </div>
@@ -492,13 +482,8 @@
                         <h4 class="item-title">🍕🏠ESPECIAL DE LA CASA</h4>
                         <p class="item-desc">Salsa de tomate, muzarella, jamon, papas fritas, salsa cheddar, lluvia de panceta, cebolla.</p>
                         <div class="item-footer">
-<<<<<<< HEAD
-                            <span class="item-price">$14.000</span>
-                            <button onclick="agregarAlCarrito('🍕🏠ESPECIAL DE LA CASA', 14000, 'PIZZAS')" class="btn-order">Agregar</button>
-=======
                             <span class="item-price">$17.000</span>
                             <button onclick="agregarAlCarrito('🍕🏠ESPECIAL DE LA CASA', 17000, 'PIZZAS')" class="btn-order">Agregar</button>
->>>>>>> 1ca7b2434f1686ce039a2e0ad0e61882e4e459aa
                         </div>
                     </div>
                 </div>
@@ -670,19 +655,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h4 class="item-title">Sándwich Completo (Churrasquito de Bife de Chorizo)</h4>
-                        <p class="item-desc">Sándwich de churrasquito con lechuga, tomate, jamón, queso, huevo y papas fritas.</p>
-                        <div class="item-footer">
-                            <span class="item-price">$15.000</span>
-                            <button onclick="agregarAlCarrito('Sándwich Completo (Churrasquito)', 15000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-=======
->>>>>>> 1ca7b2434f1686ce039a2e0ad0e61882e4e459aa
             </div>
         </div>
 
@@ -871,11 +843,7 @@
             let totalPedido = 0;
 
             let mensaje = `Hola Lo de Felipa! Quiero hacer un pedido:\n\n`;
-<<<<<<< HEAD
-            mensaje += `==============================\n`;
-=======
             mensaje += `=========================\n`;
->>>>>>> 1ca7b2434f1686ce039a2e0ad0e61882e4e459aa
 
             carrito.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
@@ -885,17 +853,6 @@
                 mensaje += `  Subtotal: $${subtotal.toLocaleString('es-AR')}\n\n`;
             });
 
-<<<<<<< HEAD
-            mensaje += `==============================\n`;
-            mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n\n`;
-            mensaje += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
-            mensaje += `📅 *Fecha del pedido:* ${new Date().toLocaleString('es-AR')}\n`;
-            mensaje += `👤 *Nombre:* [Escribí acá tu nombre completo]\n`;
-            mensaje += `💵 *Aclarar si el pago es en efectivo.\n`
-            mensaje += `💳 *Transferencia:*\n`;
-            mensaje += `📋 *ALIAS:* jmr.2026.mp\n`;
-            mensaje += `🏦 *CBU:* 0000003100048088555539\n`;
-=======
             mensaje += `=========================\n`;
             mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n\n`;
             mensaje += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
@@ -905,7 +862,6 @@
             mensaje += `📋 *ALIAS:* jmr.2026.mp\n`;
             mensaje += `🏦 *CBU:* 0000003100048088555539\n`;
             mensaje += `Titular: Alejo Manuel Ojeda\n`;
->>>>>>> 1ca7b2434f1686ce039a2e0ad0e61882e4e459aa
 
             if (metodoEntrega === 'Domicilio') {
                 mensaje += `\n📍 *Mi dirección es:* [Escribí acá tu calle, número y localidad]`;
