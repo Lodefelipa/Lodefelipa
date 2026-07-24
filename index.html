@@ -281,7 +281,7 @@
         .cart-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             padding: 15px 0;
             border-bottom: 1px solid #f1f1f1;
         }
@@ -297,6 +297,13 @@
             margin-bottom: 4px;
         }
 
+        .cart-item-extras {
+            font-size: 0.8rem;
+            color: #16a085;
+            margin: 4px 0 6px;
+            line-height: 1.4;
+        }
+
         .cart-item-price {
             color: var(--color-principal);
             font-weight: 600;
@@ -307,6 +314,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
         }
 
         .btn-qty {
@@ -425,6 +433,77 @@
             display: block;
         }
 
+        /* --- ESTILOS DE ADICIONALES DENTRO DEL CARRITO --- */
+        .pedido-extras-section {
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-adicionales {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #e5e5e5;
+        }
+
+        .adicionales-titulo {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+            color: #7f8c8d;
+            margin-bottom: 6px;
+        }
+
+        .adicional-fila {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+        }
+
+        .adicional-info {
+            font-size: 0.85rem;
+            color: var(--color-oscuro);
+        }
+
+        .adicional-info .adicional-precio {
+            color: #7f8c8d;
+            font-size: 0.78rem;
+        }
+
+        .adicional-stepper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-qty-mini {
+            background-color: #eee;
+            border: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+
+        .btn-qty-mini:hover {
+            background-color: #ddd;
+        }
+
+        .adicional-cantidad {
+            min-width: 14px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
         @media (max-width: 768px) {
             header h1 { font-size: 2.8rem; }
             .menu-grid { grid-template-columns: 1fr; }
@@ -453,7 +532,7 @@
                         <p class="item-desc">Salsa de tomate, muzarella, oregano y aceitunas.</p>
                         <div class="item-footer">
                             <span class="item-price">$11.000</span>
-                            <button onclick="agregarAlCarrito('MUZARELLA', 11000, 'PIZZAS')" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('MUZARELLA', 11000, 'PIZZAS', false)" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -462,8 +541,8 @@
                         <h4 class="item-title">NAPOLITANA</h4>
                         <p class="item-desc">Salsa de tomate, jamon, muzarella, rodajas de tomate, oregano y aceitunas.</p>
                         <div class="item-footer">
-                            <span class="item-price">$16.000</span>
-                            <button onclick="agregarAlCarrito('NAPOLITANA', 16000, 'PIZZAS')" class="btn-order">Agregar</button>
+                            <span class="item-price">$15.000</span>
+                            <button onclick="agregarAlCarrito('NAPOLITANA', 15000, 'PIZZAS', false)" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -473,7 +552,7 @@
                         <p class="item-desc">Salsa de tomate, muzarella, jamon, morron, oregano y aceitunas.</p>
                         <div class="item-footer">
                             <span class="item-price">$15.000</span>
-                            <button onclick="agregarAlCarrito('JAMON Y MORRON', 15000, 'PIZZAS')" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('JAMON Y MORRON', 15000, 'PIZZAS', false)" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -483,7 +562,7 @@
                         <p class="item-desc">Salsa de tomate, muzarella, jamon, papas fritas, salsa cheddar, lluvia de panceta, cebolla.</p>
                         <div class="item-footer">
                             <span class="item-price">$17.000</span>
-                            <button onclick="agregarAlCarrito('🍕🏠ESPECIAL DE LA CASA', 17000, 'PIZZAS')" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('🍕🏠ESPECIAL DE LA CASA', 17000, 'PIZZAS', false)" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -611,7 +690,7 @@
                         <p class="item-desc">Pollo entero dorado al horno con papas fritas. (Con anticipacion de 2HR).</p>
                         <div class="item-footer">
                             <span class="item-price">$22.000</span>
-                            <button onclick="agregarAlCarrito('Pollo Entero al Horno con Fritas', 20000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Pollo Entero al Horno con Fritas', 20000, 'Pollo y Sándwiches', false)" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -697,7 +776,7 @@
                         <p class="item-desc">Empanadas de carne cortada a cuchillo (Disponibles sabados y domingos al mediodia).</p>
                         <div class="item-footer">
                             <span class="item-price">$25.000</span>
-                            <button onclick="agregarAlCarrito('Docena de Empanadas', 25000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Docena de Empanadas', 25000, 'Papas Fritas & Empanadas', false)" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -707,7 +786,7 @@
                         <p class="item-desc">Empanada de carne cortada a cuchillo por unidad (Disponibles sabados y domingos al mediodia).</p>
                         <div class="item-footer">
                             <span class="item-price">$2.500</span>
-                            <button onclick="agregarAlCarrito('Empanada por Unidad', 2500, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Empanada por Unidad', 2500, 'Papas Fritas & Empanadas', false)" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -731,6 +810,10 @@
             <p style="text-align: center; color: #7f8c8d; margin-top: 20px;">Tu carrito está vacío.</p>
         </div>
         <div class="cart-footer">
+            <div class="pedido-extras-section">
+                <p class="adicionales-titulo">Aderezos</p>
+                <div id="lista-aderezos-globales"></div>
+            </div>
             <div class="cart-delivery-options">
                 <p class="delivery-title">¿Cómo recibís tu pedido?</p>
                 <div class="radio-group">
@@ -763,36 +846,117 @@
     <script>
         let carrito = [];
 
+        // --- CONFIGURACIÓN DE ADICIONALES (por artículo: cada línea del carrito elige los suyos) ---
+        const listaAdicionales = [
+            { nombre: "Huevo frito", precio: 1000 },
+            { nombre: "Feta de cheddar", precio: 2000 },
+            { nombre: "Medallón de carne", precio: 3500 },
+            { nombre: "Panceta", precio: 1500 }
+        ];
+
+        // --- CONFIGURACIÓN DE ADEREZOS (independientes, aplican una vez al pedido completo) ---
+        const listaAderezos = [
+            { nombre: "Dip barbacoa", precio: 1000 },
+            { nombre: "Dip mayonesa", precio: 1000 },
+            { nombre: "Dip ketchup", precio: 1000 }
+        ];
+
+        // Estado global: los aderezos son independientes, no pertenecen a ningún artículo puntual
+        let pedidoAderezos = listaAderezos.map(a => ({ ...a, cantidad: 0 }));
+
         function toggleCarrito() {
             document.getElementById('sidebar-carrito').classList.toggle('open');
             document.getElementById('cart-overlay').classList.toggle('open');
         }
 
-        function agregarAlCarrito(nombre, precio, categoria) {
-            const productoExistente = carrito.find(item => item.nombre === nombre);
+        // --- CARRITO ---
+        // Agrega el producto directo al carrito, igual que el sitio original (sin popup).
+        // Cada línea trae su propia lista de adicionales, en 0, para elegir dentro del carrito.
+        let contadorIdCarrito = 0;
+
+        function agregarAlCarrito(nombre, precio, categoria, conAdicionales = true) {
+            const productoExistente = carrito.find(item => item.nombre === nombre && item.categoria === categoria);
 
             if (productoExistente) {
                 productoExistente.cantidad += 1;
             } else {
                 carrito.push({
+                    id: 'item-' + (contadorIdCarrito++),
                     nombre: nombre,
-                    precio: precio,
+                    precioBase: precio,
                     categoria: categoria,
-                    cantidad: 1
+                    cantidad: 1,
+                    adicionales: conAdicionales ? listaAdicionales.map(a => ({ ...a, cantidad: 0 })) : []
                 });
             }
             actualizarInterfazCarrito();
         }
 
-        function cambiarCantidad(nombre, cambio) {
-            const producto = carrito.find(item => item.nombre === nombre);
+        function cambiarCantidad(id, cambio) {
+            const producto = carrito.find(item => item.id === id);
             if (producto) {
                 producto.cantidad += cambio;
                 if (producto.cantidad <= 0) {
-                    carrito = carrito.filter(item => item.nombre !== nombre);
+                    carrito = carrito.filter(item => item.id !== id);
                 }
             }
             actualizarInterfazCarrito();
+        }
+
+        // Suma/resta la cantidad de un aderezo del pedido (independiente, aplica una sola vez)
+        function cambiarCantidadAderezo(index, cambio) {
+            const item = pedidoAderezos[index];
+            if (!item) return;
+
+            item.cantidad += cambio;
+            if (item.cantidad < 0) item.cantidad = 0;
+            if (item.cantidad > 10) item.cantidad = 10; // tope razonable
+
+            renderizarAderezosGlobales();
+            actualizarInterfazCarrito();
+        }
+
+        function renderizarAderezosGlobales() {
+            const filaExtra = (extra, index) => `
+                <div class="adicional-fila">
+                    <div class="adicional-info">
+                        ${extra.nombre} <span class="adicional-precio">(+$${extra.precio.toLocaleString('es-AR')})</span>
+                    </div>
+                    <div class="adicional-stepper">
+                        <button class="btn-qty-mini" onclick="cambiarCantidadAderezo(${index}, -1)">-</button>
+                        <span class="adicional-cantidad">${extra.cantidad}</span>
+                        <button class="btn-qty-mini" onclick="cambiarCantidadAderezo(${index}, 1)">+</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('lista-aderezos-globales').innerHTML =
+                pedidoAderezos.map((a, i) => filaExtra(a, i)).join('');
+        }
+
+        // Suma/resta la cantidad de un adicional específico dentro de una línea del carrito
+        function cambiarCantidadAdicional(itemId, adicionalIndex, cambio) {
+            const item = carrito.find(p => p.id === itemId);
+            if (!item) return;
+
+            const adicional = item.adicionales[adicionalIndex];
+            if (!adicional) return;
+
+            adicional.cantidad += cambio;
+            if (adicional.cantidad < 0) adicional.cantidad = 0;
+            if (adicional.cantidad > 5) adicional.cantidad = 5; // tope razonable
+
+            actualizarInterfazCarrito();
+        }
+
+        // Calcula el precio unitario de una línea: base + adicionales elegidos para ese artículo
+        function calcularPrecioUnitario(item) {
+            const totalAdicionales = item.adicionales.reduce((acc, a) => acc + (a.precio * a.cantidad), 0);
+            return item.precioBase + totalAdicionales;
+        }
+
+        function calcularTotalExtrasGlobales() {
+            return pedidoAderezos.reduce((acc, a) => acc + (a.precio * a.cantidad), 0);
         }
 
         function actualizarInterfazCarrito() {
@@ -809,25 +973,51 @@
                 contenedorItems.innerHTML = '<p style="text-align: center; color: #7f8c8d; margin-top: 20px;">Tu carrito está vacío.</p>';
             } else {
                 carrito.forEach(item => {
+                    const precioUnitario = calcularPrecioUnitario(item);
                     totalProductos += item.cantidad;
-                    precioTotal += item.precio * item.cantidad;
+                    precioTotal += precioUnitario * item.cantidad;
+
+                    const adicionalesHtml = item.adicionales.map((adicional, index) => `
+                        <div class="adicional-fila">
+                            <div class="adicional-info">
+                                ${adicional.nombre} <span class="adicional-precio">(+$${adicional.precio.toLocaleString('es-AR')})</span>
+                            </div>
+                            <div class="adicional-stepper">
+                                <button class="btn-qty-mini" onclick="cambiarCantidadAdicional('${item.id}', ${index}, -1)">-</button>
+                                <span class="adicional-cantidad">${adicional.cantidad}</span>
+                                <button class="btn-qty-mini" onclick="cambiarCantidadAdicional('${item.id}', ${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    const bloqueAdicionales = item.adicionales.length > 0
+                        ? `<div class="cart-item-adicionales">
+                                <p class="adicionales-titulo">Adicionales</p>
+                                ${adicionalesHtml}
+                            </div>`
+                        : '';
 
                     const itemHtml = `
-                        <div class="cart-item">
-                            <div class="cart-item-details">
-                                <div class="cart-item-title">${item.nombre} <span style="font-size:0.75rem; color:#e67e22; display:block;">(${item.categoria})</span></div>
-                                <div class="cart-item-price">$${item.precio.toLocaleString('es-AR')} <span style="font-weight:normal; font-size:0.8rem; color:#7f8c8d;">c/u</span></div>
+                        <div class="cart-item" style="flex-direction: column; align-items: stretch;">
+                            <div style="display:flex; justify-content: space-between; align-items:center;">
+                                <div class="cart-item-details">
+                                    <div class="cart-item-title">${item.nombre} <span style="font-size:0.75rem; color:#e67e22; display:block;">(${item.categoria})</span></div>
+                                    <div class="cart-item-price">$${precioUnitario.toLocaleString('es-AR')} <span style="font-weight:normal; font-size:0.8rem; color:#7f8c8d;">c/u</span></div>
+                                </div>
+                                <div class="cart-item-controls">
+                                    <button class="btn-qty" onclick="cambiarCantidad('${item.id}', -1)">-</button>
+                                    <span style="font-weight: bold; min-width: 15px; text-align: center;">${item.cantidad}</span>
+                                    <button class="btn-qty" onclick="cambiarCantidad('${item.id}', 1)">+</button>
+                                </div>
                             </div>
-                            <div class="cart-item-controls">
-                                <button class="btn-qty" onclick="cambiarCantidad('${item.nombre}', -1)">-</button>
-                                <span style="font-weight: bold; min-width: 15px; text-align: center;">${item.cantidad}</span>
-                                <button class="btn-qty" onclick="cambiarCantidad('${item.nombre}', 1)">+</button>
-                            </div>
+                            ${bloqueAdicionales}
                         </div>
                     `;
                     contenedorItems.innerHTML += itemHtml;
                 });
             }
+
+            precioTotal += calcularTotalExtrasGlobales();
 
             contadorCarrito.innerText = totalProductos;
             precioTotalHtml.innerText = `$${precioTotal.toLocaleString('es-AR')}`;
@@ -846,12 +1036,34 @@
             mensaje += `=========================\n`;
 
             carrito.forEach(item => {
-                const subtotal = item.precio * item.cantidad;
+                const precioUnitario = calcularPrecioUnitario(item);
+                const subtotal = precioUnitario * item.cantidad;
                 totalPedido += subtotal;
                 mensaje += `• ${item.cantidad}x ${item.nombre} [${item.categoria}]\n`;
-                mensaje += `  Precio Unitario: $${item.precio.toLocaleString('es-AR')}\n`;
+
+                const adicionalesElegidos = item.adicionales.filter(a => a.cantidad > 0);
+                adicionalesElegidos.forEach(a => {
+                    mensaje += `   + ${a.cantidad > 1 ? a.cantidad + 'x ' : ''}${a.nombre} ($${a.precio.toLocaleString('es-AR')} c/u)\n`;
+                });
+
+                mensaje += `  Precio Unitario (con adicionales): $${precioUnitario.toLocaleString('es-AR')}\n`;
                 mensaje += `  Subtotal: $${subtotal.toLocaleString('es-AR')}\n\n`;
             });
+
+            const aderezosElegidos = pedidoAderezos.filter(a => a.cantidad > 0);
+
+            if (aderezosElegidos.length > 0) {
+                mensaje += `=========================\n`;
+                mensaje += `➕ *ADEREZOS DEL PEDIDO*\n`;
+
+                aderezosElegidos.forEach(a => {
+                    const subtotalAderezo = a.precio * a.cantidad;
+                    totalPedido += subtotalAderezo;
+                    mensaje += `• ${a.cantidad}x ${a.nombre} — $${subtotalAderezo.toLocaleString('es-AR')}\n`;
+                });
+
+                mensaje += `\n`;
+            }
 
             mensaje += `=========================\n`;
             mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n\n`;
@@ -874,6 +1086,9 @@
             
             window.open(urlWhatsApp, '_blank');
         }
+
+        // Renderiza la sección independiente de Aderezos al cargar la página
+        renderizarAderezosGlobales();
     </script>
 
 </body>
