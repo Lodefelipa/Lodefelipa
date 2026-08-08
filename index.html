@@ -276,6 +276,7 @@
             flex-grow: 1;
             overflow-y: auto;
             padding: 20px;
+            position: relative;
         }
 
         .cart-item {
@@ -295,13 +296,6 @@
             font-weight: bold;
             font-size: 1rem;
             margin-bottom: 4px;
-        }
-
-        .cart-item-extras {
-            font-size: 0.8rem;
-            color: #16a085;
-            margin: 4px 0 6px;
-            line-height: 1.4;
         }
 
         .cart-item-price {
@@ -336,13 +330,18 @@
         }
 
         .cart-footer {
-            background-color: #f9f9f9;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 14px 20px 18px;
             border-top: 1px solid #eee;
+            box-shadow: 0 -6px 16px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
         }
 
         .cart-delivery-options {
-            margin-bottom: 20px;
+            margin-top: 4px;
+            padding-top: 14px;
+            border-top: 1px dashed #eee;
         }
 
         .delivery-title {
@@ -386,11 +385,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: bold;
-            margin-bottom: 20px;
-            border-top: 2px dashed #ddd;
-            padding-top: 15px;
+            margin-bottom: 12px;
         }
 
         .cart-total-price {
@@ -435,9 +432,82 @@
 
         /* --- ESTILOS DE ADICIONALES DENTRO DEL CARRITO --- */
         .pedido-extras-section {
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid #eee;
+            margin: 10px 0;
+        }
+
+        .pedido-extras-section summary {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .pedido-extras-section summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .adicionales-titulo-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--color-oscuro);
+            padding: 12px 14px;
+            background-color: #fff6ed;
+            border: 1.5px solid #f3d9bb;
+            border-radius: 10px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            animation: llamar-atencion 1.8s ease-in-out 2;
+        }
+
+        .adicionales-titulo-toggle:active {
+            background-color: #ffecd9;
+        }
+
+        .pedido-extras-section[open] .adicionales-titulo-toggle {
+            background-color: #fff0e0;
+            border-color: var(--color-principal);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .adicionales-titulo-texto {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .extras-opcional {
+            text-transform: none;
+            font-weight: normal;
+            color: #a0a0a0;
+            font-size: 0.72rem;
+        }
+
+        .toggle-flecha {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--color-principal);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.25s ease;
+            box-shadow: 0 2px 6px rgba(230, 126, 34, 0.4);
+        }
+
+        .pedido-extras-section[open] .toggle-flecha {
+            transform: rotate(180deg);
+        }
+
+        .acordeon-contenido {
+            padding: 10px 14px 12px;
+            background-color: #fffaf5;
+            border: 1.5px solid #f3d9bb;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
         }
 
         .cart-item-adicionales {
@@ -502,6 +572,45 @@
             text-align: center;
             font-weight: bold;
             font-size: 0.85rem;
+        }
+
+        /* --- INDICADOR DE "HAY MÁS PARA VER" AL FINAL DEL SCROLL --- */
+        .scroll-hint {
+            position: sticky;
+            bottom: 0;
+            margin-top: -34px;
+            height: 34px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 4px;
+            font-size: 0.72rem;
+            font-weight: bold;
+            color: var(--color-principal);
+            background: linear-gradient(to top, #fcfcfc 40%, rgba(252,252,252,0));
+            pointer-events: none;
+            z-index: 5;
+            transition: opacity 0.25s ease;
+        }
+
+        .scroll-hint.oculto {
+            opacity: 0;
+        }
+
+        .scroll-hint-flecha {
+            display: inline-block;
+            animation: rebote-flecha 1.2s infinite;
+            margin-left: 4px;
+        }
+
+        @keyframes rebote-flecha {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
+        }
+
+        @keyframes llamar-atencion {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
+            50% { box-shadow: 0 0 0 6px rgba(230, 126, 34, 0.15); }
         }
 
         @media (max-width: 768px) {
@@ -720,7 +829,7 @@
                         <p class="item-desc">Sándwich de churrasquito con lechuga, tomate, jamon, queso, huevo y papas fritas.</p>
                         <div class="item-footer">
                             <span class="item-price">$15.000</span>
-                            <button onclick="agregarAlCarrito('Sándwich Clásico (Churrasquito)', 15000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
+                            <button onclick="agregarAlCarrito('Sándwich Completo (Churrasquito)', 15000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -806,14 +915,21 @@
             <h3>Tu Pedido</h3>
             <button class="close-cart" onclick="toggleCarrito()">&times;</button>
         </div>
-        <div class="cart-body" id="items-carrito">
-            <p style="text-align: center; color: #7f8c8d; margin-top: 20px;">Tu carrito está vacío.</p>
-        </div>
-        <div class="cart-footer">
-            <div class="pedido-extras-section">
-                <p class="adicionales-titulo">Aderezos</p>
-                <div id="lista-aderezos-globales"></div>
+        <div class="cart-body" id="cart-scroll-area">
+            <div id="items-carrito">
+                <p style="text-align: center; color: #7f8c8d; margin-top: 20px;">Tu carrito está vacío.</p>
             </div>
+
+            <details class="pedido-extras-section" id="acordeon-aderezos">
+                <summary class="adicionales-titulo-toggle">
+                    <span class="adicionales-titulo-texto">
+                        🧂 Aderezos <span class="extras-opcional">— tocá para ver</span>
+                    </span>
+                    <span class="toggle-flecha">▾</span>
+                </summary>
+                <div id="lista-aderezos-globales" class="acordeon-contenido"></div>
+            </details>
+
             <div class="cart-delivery-options">
                 <p class="delivery-title">¿Cómo recibís tu pedido?</p>
                 <div class="radio-group">
@@ -824,6 +940,10 @@
                     <label class="radio-label" for="opcion-retiro">🏪 Retiro Local</label>
                 </div>
             </div>
+
+            <div class="scroll-hint oculto" id="scroll-hint">Deslizá para ver más<span class="scroll-hint-flecha">⌄</span></div>
+        </div>
+        <div class="cart-footer" id="cart-footer">
             <div class="cart-total-container">
                 <span>Total:</span>
                 <span class="cart-total-price" id="precio-total">$0</span>
@@ -858,7 +978,8 @@
         const listaAderezos = [
             { nombre: "Dip barbacoa", precio: 1000 },
             { nombre: "Dip mayonesa", precio: 1000 },
-            { nombre: "Dip ketchup", precio: 1000 }
+            { nombre: "Dip ketchup", precio: 1000 },
+            { nombre: "Dip cheddar", precio: 1000 }
         ];
 
         // Estado global: los aderezos son independientes, no pertenecen a ningún artículo puntual
@@ -867,6 +988,18 @@
         function toggleCarrito() {
             document.getElementById('sidebar-carrito').classList.toggle('open');
             document.getElementById('cart-overlay').classList.toggle('open');
+            // Al abrir, recalculamos si hace falta mostrar el aviso de "hay más para ver"
+            setTimeout(actualizarIndicadorScroll, 50);
+        }
+
+        // Muestra/oculta el aviso "Deslizá para ver más" según si queda contenido sin ver
+        function actualizarIndicadorScroll() {
+            const area = document.getElementById('cart-scroll-area');
+            const hint = document.getElementById('scroll-hint');
+            if (!area || !hint) return;
+
+            const quedaContenido = area.scrollHeight - area.scrollTop - area.clientHeight > 15;
+            hint.classList.toggle('oculto', !quedaContenido);
         }
 
         // --- CARRITO ---
@@ -1021,6 +1154,9 @@
 
             contadorCarrito.innerText = totalProductos;
             precioTotalHtml.innerText = `$${precioTotal.toLocaleString('es-AR')}`;
+
+            // El contenido cambió de tamaño: reevaluamos si hace falta el aviso de scroll
+            setTimeout(actualizarIndicadorScroll, 50);
         }
 
         function enviarPedidoWhatsApp() {
@@ -1089,7 +1225,14 @@
 
         // Renderiza la sección independiente de Aderezos al cargar la página
         renderizarAderezosGlobales();
+
+        // Escucha el scroll del carrito para ocultar el aviso cuando ya se ve todo
+        document.getElementById('cart-scroll-area').addEventListener('scroll', actualizarIndicadorScroll);
+        // También reevaluamos si el usuario abre/cierra el acordeón de aderezos (cambia el alto del contenido)
+        document.getElementById('acordeon-aderezos').addEventListener('toggle', () => setTimeout(actualizarIndicadorScroll, 250));
+        setTimeout(actualizarIndicadorScroll, 100);
     </script>
 
 </body>
 </html>
+
