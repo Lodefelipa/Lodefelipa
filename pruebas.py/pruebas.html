@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lo de Felipa - Sabores Caseros</title>
+    <style>
+        :root {
+            --color-principal: #e67e22; 
+            --color-oscuro: #2c3e50;
+            --color-claro: #fcfcfc;
+            --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--color-claro);
+            color: var(--color-oscuro);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3.8rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-principal);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .categoria-container {
+            margin-bottom: 50px;
+        }
+
+        .categoria-title {
+            font-size: 1.8rem;
+            color: var(--color-oscuro);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--color-principal);
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .item-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .item-title {
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .item-price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--color-principal);
+        }
+
+        .btn-order {
+            background-color: #25d366; 
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: background 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-order:hover {
+            background-color: #128c7e;
+        }
+
+        .btn-instagram {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-instagram:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: var(--color-oscuro);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 12px;
+        }
+
+        /* --- ESTILOS DEL CARRITO --- */
+        #btn-ver-carrito {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: var(--color-principal);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+        }
+
+        #btn-ver-carrito:hover {
+            transform: scale(1.05);
+            background-color: #d35400;
+        }
+
+        .cart-badge {
+            background-color: white;
+            color: var(--color-principal);
+            padding: 2px 8px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        #sidebar-carrito {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sidebar-carrito.open {
+            right: 0;
+        }
+
+        .cart-header {
+            background-color: var(--color-oscuro);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 1.4rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+            padding-right: 10px;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-extras {
+            font-size: 0.8rem;
+            color: #16a085;
+            margin: 4px 0 6px;
+            line-height: 1.4;
+        }
+
+        .cart-item-price {
+            color: var(--color-principal);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .btn-qty {
+            background-color: #eee;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .btn-qty:hover {
+            background-color: #ddd;
+        }
+
+        .cart-footer {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-delivery-options {
+            margin-bottom: 20px;
+        }
+
+        .delivery-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .radio-label {
+            flex: 1;
+            display: block;
+            text-align: center;
+            background: white;
+            border: 2px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group input[type="radio"]:checked + .radio-label {
+            border-color: var(--color-principal);
+            background-color: #fffaf5;
+            color: var(--color-principal);
+        }
+
+        .cart-total-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-top: 2px dashed #ddd;
+            padding-top: 15px;
+        }
+
+        .cart-total-price {
+            color: var(--color-principal);
+        }
+
+        .btn-submit-order {
+            width: 100%;
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-submit-order:hover {
+            background-color: #128c7e;
+        }
+
+        #cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1500;
+            display: none;
+        }
+
+        #cart-overlay.open {
+            display: block;
+        }
+
+        /* --- ESTILOS DE ADICIONALES DENTRO DEL CARRITO --- */
+        .pedido-extras-section {
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-adicionales {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #e5e5e5;
+        }
+
+        .adicionales-titulo {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+            color: #7f8c8d;
+            margin-bottom: 6px;
+        }
+
+        .adicional-fila {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+        }
+
+        .adicional-info {
+            font-size: 0.85rem;
+            color: var(--color-oscuro);
+        }
+
+        .adicional-info .adicional-precio {
+            color: #7f8c8d;
+            font-size: 0.78rem;
+        }
+
+        .adicional-stepper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-qty-mini {
+            background-color: #eee;
+            border: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+
+        .btn-qty-mini:hover {
+            background-color: #ddd;
+        }
+
+        .adicional-cantidad {
+            min-width: 14px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .btn-instagram { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 0.9rem; }
+            #btn-ver-carrito { bottom: 85px; right: 20px; padding: 12px 20px; font-size: 0.9rem; }
+            #sidebar-carrito { max-width: 100%; right: -100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lo de Felipa</h1>
+        <p>Comida casera con el verdadero sabor de hogar. Elegí tu plato y hace tu pedido por WhatsApp.</p>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Nuestro Menú</h2>
+        
+        <div class="categoria-container">
+            <h3 class="categoria-title">PIZZAS</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">MUZARELLA</h4>
+                        <p class="item-desc">Salsa de tomate, muzarella, oregano y aceitunas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$11.000</span>
+                            <button onclick="agregarAlCarrito('MUZARELLA', 11000, 'PIZZAS')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">NAPOLITANA</h4>
+                        <p class="item-desc">Salsa de tomate, jamon, muzarella, rodajas de tomate, oregano y aceitunas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$16.000</span>
+                            <button onclick="agregarAlCarrito('NAPOLITANA', 16000, 'PIZZAS')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">JAMON Y MORRON</h4>
+                        <p class="item-desc">Salsa de tomate, muzarella, jamon, morron, oregano y aceitunas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$15.000</span>
+                            <button onclick="agregarAlCarrito('JAMON Y MORRON', 15000, 'PIZZAS')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">🍕🏠ESPECIAL DE LA CASA</h4>
+                        <p class="item-desc">Salsa de tomate, muzarella, jamon, papas fritas, salsa cheddar, lluvia de panceta, cebolla.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$17.000</span>
+                            <button onclick="agregarAlCarrito('🍕🏠ESPECIAL DE LA CASA', 17000, 'PIZZAS')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria-container">
+            <h3 class="categoria-title">Hamburguesas (Carne de entraña + Fritas)</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Hamburguesa JMR</h4>
+                        <p class="item-desc">Doble medallón de entraña, provoleta, cebolla caramelizada, tomate, huevo y mayonesa de chimichurri. Con fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$14.000</span>
+                            <button onclick="agregarAlCarrito('Hamburguesa JMR', 14000, 'Hamburguesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Hamburguesa BBQ</h4>
+                        <p class="item-desc">Doble medallón de entraña, panceta, cheddar, cebolla caramelizada y barbacoa. Con fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$13.000</span>
+                            <button onclick="agregarAlCarrito('Hamburguesa BBQ', 13000, 'Hamburguesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Hamburguesa-GOLDEN CHEDDAR</h4>
+                        <p class="item-desc">Doble medallón de entraña, panceta y cheddar. Con fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$12.000</span>
+                            <button onclick="agregarAlCarrito('Hamburguesa-GOLDEN CHEDDAR', 12000, 'Hamburguesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Hamburguesa Doble Cuarto</h4>
+                        <p class="item-desc">Doble medallón de entraña, cebolla picada, cheddar, ketchup y mostaza. Con fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$12.000</span>
+                            <button onclick="agregarAlCarrito('Hamburguesa Doble Cuarto', 12000, 'Hamburguesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Hamburguesa Doble Queso</h4>
+                        <p class="item-desc">Doble medallón de entraña y queso cheddar. Con fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$11.000</span>
+                            <button onclick="agregarAlCarrito('Hamburguesa Doble Queso', 11000, 'Hamburguesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria-container">
+            <h3 class="categoria-title">Milanesas con Fritas</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Milanesa Simple</h4>
+                        <p class="item-desc">Milanesa clásica con papas fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$12.000</span>
+                            <button onclick="agregarAlCarrito('Milanesa Simple', 12000, 'Milanesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Milanesa A Caballo</h4>
+                        <p class="item-desc">Con dos huevos fritos arriba y papas fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$13.000</span>
+                            <button onclick="agregarAlCarrito('Milanesa A Caballo', 13000, 'Milanesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Milanesa Napolitana</h4>
+                        <p class="item-desc">Salsa de tomate, jamón y muzzarella con papas fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$16.000</span>
+                            <button onclick="agregarAlCarrito('Milanesa Napolitana', 16000, 'Milanesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Milanesa Especial de la Casa 1</h4>
+                        <p class="item-desc">Salsa de tomate, cebolla caramelizada, muzzarella, panceta, rodajas de tomate y huevo frito. Con fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$17.000</span>
+                            <button onclick="agregarAlCarrito('Milanesa Especial de la Casa 1', 17000, 'Milanesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Milanesa Especial de la Casa 2</h4>
+                        <p class="item-desc">Salsa cheddar, panceta, cebolla de verdeo y un huevo frito. Con fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$16.000</span>
+                            <button onclick="agregarAlCarrito('Milanesa Especial de la Casa 2', 16000, 'Milanesas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria-container">
+            <h3 class="categoria-title">Pollo y Sándwiches</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Pollo Entero al Horno con Fritas</h4>
+                        <p class="item-desc">Pollo entero dorado al horno con papas fritas. (Con anticipacion de 2HR).</p>
+                        <div class="item-footer">
+                            <span class="item-price">$22.000</span>
+                            <button onclick="agregarAlCarrito('Pollo Entero al Horno con Fritas', 20000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Tortilla-Individual</h4>
+                        <p class="item-desc">Tortilla de papa.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$11.000</span>
+                            <button onclick="agregarAlCarrito('Tortilla-Individual', 11000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Sándwich Clásico (Churrasquito de Bife Chorizo)</h4>
+                        <p class="item-desc">Sándwich de churrasquito con lechuga, tomate y papas fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$13.000</span>
+                            <button onclick="agregarAlCarrito('Sándwich Clásico (Churrasquito)', 13000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Sándwich Completo (Churrasquito de Bife Chorizo)</h4>
+                        <p class="item-desc">Sándwich de churrasquito con lechuga, tomate, jamon, queso, huevo y papas fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$15.000</span>
+                            <button onclick="agregarAlCarrito('Sándwich Clásico (Churrasquito)', 15000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Sánguche de Bondiola</h4>
+                        <p class="item-desc">Sánguche de bondiola braseada con cebolla, morron, salsa barbacoa y papas fritas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$10.000</span>
+                            <button onclick="agregarAlCarrito('Sanguche de Bondiola', 10000, 'Pollo y Sándwiches')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria-container">
+            <h3 class="categoria-title">Papas Fritas & Empanadas</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Papas Fritas Simples</h4>
+                        <p class="item-desc">Porción 1kg de papas fritas caseras.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$10.000</span>
+                            <button onclick="agregarAlCarrito('Papas Fritas Simples', 10000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Papas Fritas con Cheddar</h4>
+                        <p class="item-desc">Porción 1kg de papas fritas con salsa cheddar.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$12.000</span>
+                            <button onclick="agregarAlCarrito('Papas Fritas con Cheddar', 12000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Papas Fritas Completas</h4>
+                        <p class="item-desc">Porción 1kg de papas fritas completas.</p>
+                        <div class="item-footer">
+                            <span class="item-price">$14.000</span>
+                            <button onclick="agregarAlCarrito('Papas Fritas Completas', 14000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Docena de Empanadas</h4>
+                        <p class="item-desc">Empanadas de carne cortada a cuchillo (Disponibles sabados y domingos al mediodia).</p>
+                        <div class="item-footer">
+                            <span class="item-price">$25.000</span>
+                            <button onclick="agregarAlCarrito('Docena de Empanadas', 25000, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h4 class="item-title">Empanada por Unidad</h4>
+                        <p class="item-desc">Empanada de carne cortada a cuchillo por unidad (Disponibles sabados y domingos al mediodia).</p>
+                        <div class="item-footer">
+                            <span class="item-price">$2.500</span>
+                            <button onclick="agregarAlCarrito('Empanada por Unidad', 2500, 'Papas Fritas & Empanadas')" class="btn-order">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <button id="btn-ver-carrito" onclick="toggleCarrito()">
+        🛒 Carrito <span class="cart-badge" id="contador-carrito">0</span>
+    </button>
+
+    <div id="cart-overlay" onclick="toggleCarrito()"></div>
+
+    <div id="sidebar-carrito">
+        <div class="cart-header">
+            <h3>Tu Pedido</h3>
+            <button class="close-cart" onclick="toggleCarrito()">&times;</button>
+        </div>
+        <div class="cart-body" id="items-carrito">
+            <p style="text-align: center; color: #7f8c8d; margin-top: 20px;">Tu carrito está vacío.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="pedido-extras-section">
+                <p class="adicionales-titulo">Aderezos</p>
+                <div id="lista-aderezos-globales"></div>
+            </div>
+            <div class="cart-delivery-options">
+                <p class="delivery-title">¿Cómo recibís tu pedido?</p>
+                <div class="radio-group">
+                    <input type="radio" id="opcion-domicilio" name="metodo-entrega" value="Domicilio" checked>
+                    <label class="radio-label" for="opcion-domicilio">🛵 Domicilio</label>
+                    
+                    <input type="radio" id="opcion-retiro" name="metodo-entrega" value="Retiro en Local">
+                    <label class="radio-label" for="opcion-retiro">🏪 Retiro Local</label>
+                </div>
+            </div>
+            <div class="cart-total-container">
+                <span>Total:</span>
+                <span class="cart-total-price" id="precio-total">$0</span>
+            </div>
+            <button onclick="enviarPedidoWhatsApp()" class="btn-submit-order">Confirmar por WhatsApp ➔</button>
+        </div>
+    </div>
+
+    <a href="https://www.instagram.com/lodefelipa?igsh=cW8ycWxnbjR5bjlt" target="_blank" class="btn-instagram">
+        📸 Ver Instagram de Felipa
+    </a>
+
+    <footer>
+        <p><strong>Lo de Felipa — Sabores Caseros</strong></p>
+        <p>📍 Dirección: Av. Gral. Hornos 1668</p>
+        <p>📞 WhatsApp para Pedidos: 11 2284-4032</p>
+        <p>🕒 Abierto: Lunes a Domingos de 20:00 a 23:30 hs.</p>
+    </footer>
+
+    <script>
+        let carrito = [];
+
+        // --- CONFIGURACIÓN DE ADICIONALES (por artículo: cada línea del carrito elige los suyos) ---
+        const listaAdicionales = [
+            { nombre: "Huevo frito", precio: 1000 },
+            { nombre: "Feta de cheddar", precio: 2000 },
+            { nombre: "Medallón de carne", precio: 3500 },
+            { nombre: "Panceta", precio: 1500 }
+        ];
+
+        // --- CONFIGURACIÓN DE ADEREZOS (independientes, aplican una vez al pedido completo) ---
+        const listaAderezos = [
+            { nombre: "Dip barbacoa", precio: 1000 },
+            { nombre: "Dip mayonesa", precio: 1000 },
+            { nombre: "Dip ketchup", precio: 1000 }
+        ];
+
+        // Estado global: los aderezos son independientes, no pertenecen a ningún artículo puntual
+        let pedidoAderezos = listaAderezos.map(a => ({ ...a, cantidad: 0 }));
+
+        function toggleCarrito() {
+            document.getElementById('sidebar-carrito').classList.toggle('open');
+            document.getElementById('cart-overlay').classList.toggle('open');
+        }
+
+        // --- CARRITO ---
+        // Agrega el producto directo al carrito, igual que el sitio original (sin popup).
+        // Cada línea trae su propia lista de adicionales, en 0, para elegir dentro del carrito.
+        let contadorIdCarrito = 0;
+
+        function agregarAlCarrito(nombre, precio, categoria) {
+            const productoExistente = carrito.find(item => item.nombre === nombre && item.categoria === categoria);
+
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({
+                    id: 'item-' + (contadorIdCarrito++),
+                    nombre: nombre,
+                    precioBase: precio,
+                    categoria: categoria,
+                    cantidad: 1,
+                    adicionales: listaAdicionales.map(a => ({ ...a, cantidad: 0 }))
+                });
+            }
+            actualizarInterfazCarrito();
+        }
+
+        function cambiarCantidad(id, cambio) {
+            const producto = carrito.find(item => item.id === id);
+            if (producto) {
+                producto.cantidad += cambio;
+                if (producto.cantidad <= 0) {
+                    carrito = carrito.filter(item => item.id !== id);
+                }
+            }
+            actualizarInterfazCarrito();
+        }
+
+        // Suma/resta la cantidad de un aderezo del pedido (independiente, aplica una sola vez)
+        function cambiarCantidadAderezo(index, cambio) {
+            const item = pedidoAderezos[index];
+            if (!item) return;
+
+            item.cantidad += cambio;
+            if (item.cantidad < 0) item.cantidad = 0;
+            if (item.cantidad > 10) item.cantidad = 10; // tope razonable
+
+            renderizarAderezosGlobales();
+            actualizarInterfazCarrito();
+        }
+
+        function renderizarAderezosGlobales() {
+            const filaExtra = (extra, index) => `
+                <div class="adicional-fila">
+                    <div class="adicional-info">
+                        ${extra.nombre} <span class="adicional-precio">(+$${extra.precio.toLocaleString('es-AR')})</span>
+                    </div>
+                    <div class="adicional-stepper">
+                        <button class="btn-qty-mini" onclick="cambiarCantidadAderezo(${index}, -1)">-</button>
+                        <span class="adicional-cantidad">${extra.cantidad}</span>
+                        <button class="btn-qty-mini" onclick="cambiarCantidadAderezo(${index}, 1)">+</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('lista-aderezos-globales').innerHTML =
+                pedidoAderezos.map((a, i) => filaExtra(a, i)).join('');
+        }
+
+        // Suma/resta la cantidad de un adicional específico dentro de una línea del carrito
+        function cambiarCantidadAdicional(itemId, adicionalIndex, cambio) {
+            const item = carrito.find(p => p.id === itemId);
+            if (!item) return;
+
+            const adicional = item.adicionales[adicionalIndex];
+            if (!adicional) return;
+
+            adicional.cantidad += cambio;
+            if (adicional.cantidad < 0) adicional.cantidad = 0;
+            if (adicional.cantidad > 5) adicional.cantidad = 5; // tope razonable
+
+            actualizarInterfazCarrito();
+        }
+
+        // Calcula el precio unitario de una línea: base + adicionales elegidos para ese artículo
+        function calcularPrecioUnitario(item) {
+            const totalAdicionales = item.adicionales.reduce((acc, a) => acc + (a.precio * a.cantidad), 0);
+            return item.precioBase + totalAdicionales;
+        }
+
+        function calcularTotalExtrasGlobales() {
+            return pedidoAderezos.reduce((acc, a) => acc + (a.precio * a.cantidad), 0);
+        }
+
+        function actualizarInterfazCarrito() {
+            const contenedorItems = document.getElementById('items-carrito');
+            const contadorCarrito = document.getElementById('contador-carrito');
+            const precioTotalHtml = document.getElementById('precio-total');
+            
+            contenedorItems.innerHTML = '';
+            
+            let totalProductos = 0;
+            let precioTotal = 0;
+
+            if (carrito.length === 0) {
+                contenedorItems.innerHTML = '<p style="text-align: center; color: #7f8c8d; margin-top: 20px;">Tu carrito está vacío.</p>';
+            } else {
+                carrito.forEach(item => {
+                    const precioUnitario = calcularPrecioUnitario(item);
+                    totalProductos += item.cantidad;
+                    precioTotal += precioUnitario * item.cantidad;
+
+                    const adicionalesHtml = item.adicionales.map((adicional, index) => `
+                        <div class="adicional-fila">
+                            <div class="adicional-info">
+                                ${adicional.nombre} <span class="adicional-precio">(+$${adicional.precio.toLocaleString('es-AR')})</span>
+                            </div>
+                            <div class="adicional-stepper">
+                                <button class="btn-qty-mini" onclick="cambiarCantidadAdicional('${item.id}', ${index}, -1)">-</button>
+                                <span class="adicional-cantidad">${adicional.cantidad}</span>
+                                <button class="btn-qty-mini" onclick="cambiarCantidadAdicional('${item.id}', ${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    const itemHtml = `
+                        <div class="cart-item" style="flex-direction: column; align-items: stretch;">
+                            <div style="display:flex; justify-content: space-between; align-items:center;">
+                                <div class="cart-item-details">
+                                    <div class="cart-item-title">${item.nombre} <span style="font-size:0.75rem; color:#e67e22; display:block;">(${item.categoria})</span></div>
+                                    <div class="cart-item-price">$${precioUnitario.toLocaleString('es-AR')} <span style="font-weight:normal; font-size:0.8rem; color:#7f8c8d;">c/u</span></div>
+                                </div>
+                                <div class="cart-item-controls">
+                                    <button class="btn-qty" onclick="cambiarCantidad('${item.id}', -1)">-</button>
+                                    <span style="font-weight: bold; min-width: 15px; text-align: center;">${item.cantidad}</span>
+                                    <button class="btn-qty" onclick="cambiarCantidad('${item.id}', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="cart-item-adicionales">
+                                <p class="adicionales-titulo">Adicionales</p>
+                                ${adicionalesHtml}
+                            </div>
+                        </div>
+                    `;
+                    contenedorItems.innerHTML += itemHtml;
+                });
+            }
+
+            precioTotal += calcularTotalExtrasGlobales();
+
+            contadorCarrito.innerText = totalProductos;
+            precioTotalHtml.innerText = `$${precioTotal.toLocaleString('es-AR')}`;
+        }
+
+        function enviarPedidoWhatsApp() {
+            if (carrito.length === 0) {
+                alert('El carrito está vacío. Agrega algún producto antes de enviar.');
+                return;
+            }
+
+            const metodoEntrega = document.querySelector('input[name="metodo-entrega"]:checked').value;
+            let totalPedido = 0;
+
+            let mensaje = `Hola Lo de Felipa! Quiero hacer un pedido:\n\n`;
+            mensaje += `=========================\n`;
+
+            carrito.forEach(item => {
+                const precioUnitario = calcularPrecioUnitario(item);
+                const subtotal = precioUnitario * item.cantidad;
+                totalPedido += subtotal;
+                mensaje += `• ${item.cantidad}x ${item.nombre} [${item.categoria}]\n`;
+
+                const adicionalesElegidos = item.adicionales.filter(a => a.cantidad > 0);
+                adicionalesElegidos.forEach(a => {
+                    mensaje += `   + ${a.cantidad > 1 ? a.cantidad + 'x ' : ''}${a.nombre} ($${a.precio.toLocaleString('es-AR')} c/u)\n`;
+                });
+
+                mensaje += `  Precio Unitario (con adicionales): $${precioUnitario.toLocaleString('es-AR')}\n`;
+                mensaje += `  Subtotal: $${subtotal.toLocaleString('es-AR')}\n\n`;
+            });
+
+            const aderezosElegidos = pedidoAderezos.filter(a => a.cantidad > 0);
+
+            if (aderezosElegidos.length > 0) {
+                mensaje += `=========================\n`;
+                mensaje += `➕ *ADEREZOS DEL PEDIDO*\n`;
+
+                aderezosElegidos.forEach(a => {
+                    const subtotalAderezo = a.precio * a.cantidad;
+                    totalPedido += subtotalAderezo;
+                    mensaje += `• ${a.cantidad}x ${a.nombre} — $${subtotalAderezo.toLocaleString('es-AR')}\n`;
+                });
+
+                mensaje += `\n`;
+            }
+
+            mensaje += `=========================\n`;
+            mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n\n`;
+            mensaje += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
+            mensaje += `📅 *Fecha del pedido:* ${new Date().toLocaleString('es-AR')}\n`;
+            mensaje += `👤 *Nombre:* [Escribí tu nombre completo]\n`;
+            mensaje += `💳 *Método de pago (Transferencia o efectivo):* [Aclarar metodo de pago]\n`;
+            mensaje += `📋 *ALIAS:* jmr.2026.mp\n`;
+            mensaje += `🏦 *CBU:* 0000003100048088555539\n`;
+            mensaje += `Titular: Alejo Manuel Ojeda\n`;
+
+            if (metodoEntrega === 'Domicilio') {
+                mensaje += `\n📍 *Mi dirección es:* [Escribí acá tu calle, número y localidad]`;
+            } else {
+                mensaje += `\n🏪 Retiro por el local (Av. Gral. Hornos 1668)`;
+            }
+
+            const numeroTelefono = "5491122844032";
+            const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
+            
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        // Renderiza la sección independiente de Aderezos al cargar la página
+        renderizarAderezosGlobales();
+    </script>
+
+</body>
+</html>
