@@ -7,8 +7,11 @@
     <style>
         :root {
             --color-principal: #e67e22; 
-            --color-oscuro: #2c3e50;
-            --color-claro: #fcfcfc;
+            --color-oscuro: #141414;
+            --color-claro: #0d0d0d;
+            --color-superficie: #1a1a1a;
+            --color-borde: #2b2b2b;
+            --color-texto: #f2f2f2;
             --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -21,12 +24,12 @@
 
         body {
             background-color: var(--color-claro);
-            color: var(--color-oscuro);
+            color: var(--color-texto);
             line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200') no-repeat center center/cover;
             height: 50vh;
             display: flex;
             flex-direction: column;
@@ -83,7 +86,7 @@
 
         .categoria-title {
             font-size: 1.8rem;
-            color: var(--color-oscuro);
+            color: var(--color-texto);
             margin-bottom: 25px;
             border-left: 5px solid var(--color-principal);
             padding-left: 15px;
@@ -97,10 +100,11 @@
         }
 
         .menu-item {
-            background: white;
+            background: var(--color-superficie);
+            border: 1px solid var(--color-borde);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -135,7 +139,7 @@
             justify-content: space-between;
             align-items: center;
             padding-top: 15px;
-            border-top: 1px solid #f1f1f1;
+            border-top: 1px solid var(--color-borde);
         }
 
         .item-price {
@@ -239,8 +243,8 @@
             width: 100%;
             max-width: 420px;
             height: 100vh;
-            background-color: white;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            background-color: var(--color-superficie);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.6);
             z-index: 2000;
             transition: right 0.3s ease;
             display: flex;
@@ -284,7 +288,7 @@
             justify-content: space-between;
             align-items: flex-start;
             padding: 15px 0;
-            border-bottom: 1px solid #f1f1f1;
+            border-bottom: 1px solid var(--color-borde);
         }
 
         .cart-item-details {
@@ -312,7 +316,8 @@
         }
 
         .btn-qty {
-            background-color: #eee;
+            background-color: var(--color-borde);
+            color: var(--color-texto);
             border: none;
             width: 28px;
             height: 28px;
@@ -326,14 +331,14 @@
         }
 
         .btn-qty:hover {
-            background-color: #ddd;
+            background-color: #3a3a3a;
         }
 
         .cart-footer {
-            background-color: #ffffff;
+            background-color: var(--color-superficie);
             padding: 14px 20px 18px;
-            border-top: 1px solid #eee;
-            box-shadow: 0 -6px 16px rgba(0,0,0,0.08);
+            border-top: 1px solid var(--color-borde);
+            box-shadow: 0 -6px 16px rgba(0,0,0,0.4);
             position: relative;
             z-index: 10;
         }
@@ -341,7 +346,7 @@
         .cart-delivery-options {
             margin-top: 4px;
             padding-top: 14px;
-            border-top: 1px dashed #eee;
+            border-top: 1px dashed var(--color-borde);
         }
 
         .delivery-title {
@@ -361,8 +366,8 @@
             flex: 1;
             display: block;
             text-align: center;
-            background: white;
-            border: 2px solid #ddd;
+            background: var(--color-claro);
+            border: 2px solid var(--color-borde);
             padding: 10px;
             border-radius: 8px;
             cursor: pointer;
@@ -377,8 +382,62 @@
 
         .radio-group input[type="radio"]:checked + .radio-label {
             border-color: var(--color-principal);
-            background-color: #fffaf5;
+            background-color: #2a1f14;
             color: var(--color-principal);
+        }
+
+        .cart-cliente-datos {
+            margin-top: 4px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--color-borde);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            color: var(--color-texto);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 2px solid var(--color-borde);
+            background-color: var(--color-claro);
+            color: var(--color-texto);
+            font-size: 0.95rem;
+            font-family: var(--fuente);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-principal);
+        }
+
+        .form-input::placeholder {
+            color: #777;
+        }
+
+        .datos-domicilio {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--color-borde);
+            animation: aparecer-datos 0.25s ease;
+        }
+
+        .datos-domicilio.oculto {
+            display: none;
+        }
+
+        @keyframes aparecer-datos {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .cart-total-container {
@@ -450,21 +509,21 @@
             align-items: center;
             font-size: 0.95rem;
             font-weight: bold;
-            color: var(--color-oscuro);
+            color: var(--color-texto);
             padding: 12px 14px;
-            background-color: #fff6ed;
-            border: 1.5px solid #f3d9bb;
+            background-color: #241a10;
+            border: 1.5px solid #4a3319;
             border-radius: 10px;
             transition: background-color 0.2s ease, border-color 0.2s ease;
             animation: llamar-atencion 1.8s ease-in-out 2;
         }
 
         .adicionales-titulo-toggle:active {
-            background-color: #ffecd9;
+            background-color: #33240f;
         }
 
         .pedido-extras-section[open] .adicionales-titulo-toggle {
-            background-color: #fff0e0;
+            background-color: #2a1f14;
             border-color: var(--color-principal);
             border-radius: 10px 10px 0 0;
         }
@@ -504,8 +563,8 @@
 
         .acordeon-contenido {
             padding: 10px 14px 12px;
-            background-color: #fffaf5;
-            border: 1.5px solid #f3d9bb;
+            background-color: #1f1710;
+            border: 1.5px solid #4a3319;
             border-top: none;
             border-radius: 0 0 10px 10px;
         }
@@ -513,7 +572,7 @@
         .cart-item-adicionales {
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 1px dashed #e5e5e5;
+            border-top: 1px dashed var(--color-borde);
         }
 
         .adicionales-titulo {
@@ -534,7 +593,7 @@
 
         .adicional-info {
             font-size: 0.85rem;
-            color: var(--color-oscuro);
+            color: var(--color-texto);
         }
 
         .adicional-info .adicional-precio {
@@ -549,7 +608,8 @@
         }
 
         .btn-qty-mini {
-            background-color: #eee;
+            background-color: var(--color-borde);
+            color: var(--color-texto);
             border: none;
             width: 22px;
             height: 22px;
@@ -564,7 +624,7 @@
         }
 
         .btn-qty-mini:hover {
-            background-color: #ddd;
+            background-color: #3a3a3a;
         }
 
         .adicional-cantidad {
@@ -587,7 +647,7 @@
             font-size: 0.72rem;
             font-weight: bold;
             color: var(--color-principal);
-            background: linear-gradient(to top, #fcfcfc 40%, rgba(252,252,252,0));
+            background: linear-gradient(to top, #1a1a1a 40%, rgba(26,26,26,0));
             pointer-events: none;
             z-index: 5;
             transition: opacity 0.25s ease;
@@ -940,14 +1000,45 @@
                 <div id="lista-aderezos-globales" class="acordeon-contenido"></div>
             </details>
 
+            <div class="cart-cliente-datos">
+                <div class="form-group">
+                    <label class="form-label" for="input-nombre">🧑 Nombre completo</label>
+                    <input type="text" id="input-nombre" class="form-input" placeholder="Ej: Juan Pérez">
+                </div>
+
+                <p class="delivery-title">💳 ¿Cómo pagás?</p>
+                <div class="radio-group" style="margin-bottom: 4px;">
+                    <input type="radio" id="pago-efectivo" name="metodo-pago" value="Efectivo" checked>
+                    <label class="radio-label" for="pago-efectivo">💵 Efectivo</label>
+
+                    <input type="radio" id="pago-transferencia" name="metodo-pago" value="Transferencia">
+                    <label class="radio-label" for="pago-transferencia">🏦 Transferencia</label>
+                </div>
+            </div>
+
             <div class="cart-delivery-options">
                 <p class="delivery-title">¿Cómo recibís tu pedido?</p>
                 <div class="radio-group">
-                    <input type="radio" id="opcion-domicilio" name="metodo-entrega" value="Domicilio" checked>
+                    <input type="radio" id="opcion-domicilio" name="metodo-entrega" value="Domicilio" checked onchange="toggleDatosDomicilio()">
                     <label class="radio-label" for="opcion-domicilio">🛵 Domicilio</label>
                     
-                    <input type="radio" id="opcion-retiro" name="metodo-entrega" value="Retiro en Local">
+                    <input type="radio" id="opcion-retiro" name="metodo-entrega" value="Retiro en Local" onchange="toggleDatosDomicilio()">
                     <label class="radio-label" for="opcion-retiro">🏪 Retiro Local</label>
+                </div>
+
+                <div class="datos-domicilio" id="datos-domicilio">
+                    <div class="form-group">
+                        <label class="form-label" for="input-direccion">📍 Calle y número</label>
+                        <input type="text" id="input-direccion" class="form-input" placeholder="Ej: Av. Gral. Hornos 1668">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-barrio">🏘️ Barrio / Localidad</label>
+                        <input type="text" id="input-barrio" class="form-input" placeholder="Ej: Barracas">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="input-referencia">📝 Referencia (opcional)</label>
+                        <input type="text" id="input-referencia" class="form-input" placeholder="Ej: Timbre 2B, portón negro">
+                    </div>
                 </div>
             </div>
 
@@ -994,6 +1085,13 @@
 
         // Estado global: los aderezos son independientes, no pertenecen a ningún artículo puntual
         let pedidoAderezos = listaAderezos.map(a => ({ ...a, cantidad: 0 }));
+
+        // Muestra/oculta los campos de dirección según el método de entrega elegido
+        function toggleDatosDomicilio() {
+            const esDomicilio = document.getElementById('opcion-domicilio').checked;
+            document.getElementById('datos-domicilio').classList.toggle('oculto', !esDomicilio);
+            setTimeout(actualizarIndicadorScroll, 50);
+        }
 
         function toggleCarrito() {
             document.getElementById('sidebar-carrito').classList.toggle('open');
@@ -1175,56 +1273,88 @@
                 return;
             }
 
+            // --- Validaciones ---
+            const nombre = document.getElementById('input-nombre').value.trim();
+            if (!nombre) {
+                alert('Por favor, escribí tu nombre completo antes de enviar el pedido.');
+                document.getElementById('input-nombre').focus();
+                return;
+            }
+
             const metodoEntrega = document.querySelector('input[name="metodo-entrega"]:checked').value;
+            const metodoPago = document.querySelector('input[name="metodo-pago"]:checked').value;
+
+            let direccion = '', barrio = '', referencia = '';
+            if (metodoEntrega === 'Domicilio') {
+                direccion = document.getElementById('input-direccion').value.trim();
+                barrio = document.getElementById('input-barrio').value.trim();
+                referencia = document.getElementById('input-referencia').value.trim();
+
+                if (!direccion) {
+                    alert('Por favor, completá tu dirección (calle y número) para el envío a domicilio.');
+                    document.getElementById('input-direccion').focus();
+                    return;
+                }
+            }
+
+            // --- Armado del mensaje ---
+            const LINEA = '━━━━━━━━━━━━━━━━━━━━';
             let totalPedido = 0;
 
-            let mensaje = `Hola Lo de Felipa! Quiero hacer un pedido:\n\n`;
-            mensaje += `=========================\n`;
+            let mensaje = `🍽️ *NUEVO PEDIDO — LO DE FELIPA*\n${LINEA}\n\n`;
 
-            carrito.forEach(item => {
+            carrito.forEach((item, idx) => {
                 const precioUnitario = calcularPrecioUnitario(item);
                 const subtotal = precioUnitario * item.cantidad;
                 totalPedido += subtotal;
-                mensaje += `• ${item.cantidad}x ${item.nombre} [${item.categoria}]\n`;
+
+                mensaje += `*${idx + 1}. ${item.cantidad}x ${item.nombre}*\n`;
+                mensaje += `   Categoría: ${item.categoria}\n`;
+                mensaje += `   Precio unitario: $${item.precioBase.toLocaleString('es-AR')}\n`;
 
                 const adicionalesElegidos = item.adicionales.filter(a => a.cantidad > 0);
-                adicionalesElegidos.forEach(a => {
-                    mensaje += `   + ${a.cantidad > 1 ? a.cantidad + 'x ' : ''}${a.nombre} ($${a.precio.toLocaleString('es-AR')} c/u)\n`;
-                });
+                if (adicionalesElegidos.length > 0) {
+                    mensaje += `   Adicionales:\n`;
+                    adicionalesElegidos.forEach(a => {
+                        mensaje += `     ➕ ${a.cantidad > 1 ? a.cantidad + 'x ' : ''}${a.nombre} (+$${a.precio.toLocaleString('es-AR')} c/u)\n`;
+                    });
+                }
 
-                mensaje += `  Precio Unitario (con adicionales): $${precioUnitario.toLocaleString('es-AR')}\n`;
-                mensaje += `  Subtotal: $${subtotal.toLocaleString('es-AR')}\n\n`;
+                mensaje += `   *Subtotal: $${subtotal.toLocaleString('es-AR')}*\n\n`;
             });
 
             const aderezosElegidos = pedidoAderezos.filter(a => a.cantidad > 0);
-
             if (aderezosElegidos.length > 0) {
-                mensaje += `=========================\n`;
-                mensaje += `➕ *ADEREZOS DEL PEDIDO*\n`;
-
+                mensaje += `${LINEA}\n🧂 *ADEREZOS*\n`;
                 aderezosElegidos.forEach(a => {
                     const subtotalAderezo = a.precio * a.cantidad;
                     totalPedido += subtotalAderezo;
                     mensaje += `• ${a.cantidad}x ${a.nombre} — $${subtotalAderezo.toLocaleString('es-AR')}\n`;
                 });
-
                 mensaje += `\n`;
             }
 
-            mensaje += `=========================\n`;
-            mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n\n`;
-            mensaje += `🛵 *Método de entrega:* ${metodoEntrega}\n`;
-            mensaje += `📅 *Fecha del pedido:* ${new Date().toLocaleString('es-AR')}\n`;
-            mensaje += `👤 *Nombre:* [Escribí tu nombre completo]\n`;
-            mensaje += `💳 *Método de pago (Transferencia o efectivo):* [Aclarar metodo de pago]\n`;
-            mensaje += `📋 *ALIAS:* jmr.2026.mp\n`;
-            mensaje += `🏦 *CBU:* 0000003100048088555539\n`;
-            mensaje += `Titular: Alejo Manuel Ojeda\n`;
+            mensaje += `${LINEA}\n`;
+            mensaje += `💰 *TOTAL: $${totalPedido.toLocaleString('es-AR')}*\n`;
+            mensaje += `${LINEA}\n\n`;
+
+            mensaje += `👤 *Nombre:* ${nombre}\n`;
+            mensaje += `💳 *Pago:* ${metodoPago}\n`;
+            if (metodoPago === 'Transferencia') {
+                mensaje += `   ALIAS: jmr.2026.mp\n`;
+                mensaje += `   CBU: 0000003100048088555539\n`;
+                mensaje += `   Titular: Alejo Manuel Ojeda\n`;
+            }
+            mensaje += `📅 *Fecha:* ${new Date().toLocaleString('es-AR')}\n\n`;
 
             if (metodoEntrega === 'Domicilio') {
-                mensaje += `\n📍 *Mi dirección es:* [Escribí acá tu calle, número y localidad]`;
+                mensaje += `🛵 *Entrega a domicilio*\n`;
+                mensaje += `📍 Dirección: ${direccion}\n`;
+                if (barrio) mensaje += `🏘️ Barrio/Localidad: ${barrio}\n`;
+                if (referencia) mensaje += `📝 Referencia: ${referencia}\n`;
             } else {
-                mensaje += `\n🏪 Retiro por el local (Av. Gral. Hornos 1668)`;
+                mensaje += `🏪 *Retiro por el local*\n`;
+                mensaje += `📍 Av. Gral. Hornos 1668\n`;
             }
 
             const numeroTelefono = "5491122844032";
