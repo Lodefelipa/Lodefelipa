@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Lo de Felipa - Sabores Caseros</title>
     <style>
         :root {
@@ -243,6 +243,7 @@
             width: 100%;
             max-width: 420px;
             height: 100vh;
+            height: 100dvh;
             background-color: var(--color-superficie);
             box-shadow: -5px 0 25px rgba(0,0,0,0.6);
             z-index: 2000;
@@ -336,11 +337,12 @@
 
         .cart-footer {
             background-color: var(--color-superficie);
-            padding: 14px 20px 18px;
+            padding: 14px 20px calc(18px + env(safe-area-inset-bottom));
             border-top: 1px solid var(--color-borde);
             box-shadow: 0 -6px 16px rgba(0,0,0,0.4);
             position: relative;
             z-index: 10;
+            flex-shrink: 0;
         }
 
         .cart-delivery-options {
@@ -1308,7 +1310,7 @@
                 const subtotal = precioUnitario * item.cantidad;
                 totalPedido += subtotal;
 
-                mensaje += `${item.cantidad}x ${item.nombre}*\n`;
+                mensaje += `*${idx + 1}. ${item.cantidad}x ${item.nombre}*\n`;
                 mensaje += `   Categoría: ${item.categoria}\n`;
                 mensaje += `   Precio unitario: $${item.precioBase.toLocaleString('es-AR')}\n`;
 
