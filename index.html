@@ -1308,7 +1308,7 @@
                 const subtotal = precioUnitario * item.cantidad;
                 totalPedido += subtotal;
 
-                mensaje += `*${idx + 1}. ${item.cantidad}x ${item.nombre}*\n`;
+                mensaje += `${item.cantidad}x ${item.nombre}*\n`;
                 mensaje += `   Categoría: ${item.categoria}\n`;
                 mensaje += `   Precio unitario: $${item.precioBase.toLocaleString('es-AR')}\n`;
 
